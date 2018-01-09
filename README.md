@@ -1,57 +1,49 @@
-<p align="center">
-  <img width="64" src="media/cdr-icon.png" alt="cookiecutter-django-rest">
-  <h3 align="center">cookiecutter-django-rest</h3>
-  <p align="center">a factory for building bleeding edge, best practiced, scalable, rest apis</p>
-  <p align="center">
-    <a href="https://travis-ci.org/agconti/cookiecutter-django-rest">
-      <img src="https://travis-ci.org/agconti/cookiecutter-django-rest.svg?branch=master" alt="Build Status">
-    </a>
-    <a href="https://pyup.io/repos/github/agconti/cookiecutter-django-rest/">
-      <img src="https://pyup.io/repos/github/agconti/cookiecutter-django-rest/shield.svg" alt="Dependencies">
-    </a>
-    <a href="https://pyup.io/repos/github/agconti/cookiecutter-django-rest/">
-      <img src="https://pyup.io/repos/github/agconti/cookiecutter-django-rest/python-3-shield.svg" alt="Python 3">
-    </a>
-  </p>
-</p>
+# Heroku Django Starter Template
 
-You need to make a scalable api on a deadline. You deeply care about the quality of your work.
-`cookiecutter-django-rest` takes care of the details so you can focus on making your api awesome.  Scaffolding a project takes seconds and it gives you [authentication](https://github.com/agconti/cookiecutter-django-rest/blob/master/%7B%7Bcookiecutter.github_repository_name%7D%7D/docs/api/authentication.md), [user accounts](https://github.com/agconti/cookiecutter-django-rest/blob/master/%7B%7Bcookiecutter.github_repository_name%7D%7D/%7B%7Bcookiecutter.app_name%7D%7D/users/views.py), and the [docs](https://github.com/agconti/cookiecutter-django-rest/blob/master/%7B%7Bcookiecutter.github_repository_name%7D%7D/docs/api/users.md) and [tests](https://github.com/agconti/cookiecutter-django-rest/blob/master/%7B%7Bcookiecutter.github_repository_name%7D%7D/%7B%7Bcookiecutter.app_name%7D%7D/users/test/test_views.py) to support them. Just add your own resources to the api and start shipping. ✨ 💅
+An utterly fantastic project starter template for Django 2.0.
+
+## Features
+
+- Production-ready configuration for Static Files, Database Settings, Gunicorn, etc.
+- Enhancements to Django's static file serving functionality via WhiteNoise.
+- Latest Python 3.6 runtime environment.
+
+## How to Use
+
+To use this project, follow these steps:
+
+1. Create your working environment.
+2. Install Django (`$ pipenv install django`)
+3. Create a new project using this template
+
+## Creating Your Project
+
+Using this template to create a new Django app is easy::
+
+    $ django-admin.py startproject --template=https://github.com/heroku/heroku-django-template/archive/master.zip --name=Procfile helloworld
+
+(If this doesn't work on windows, replace `django-admin.py` with `django-admin`)
+
+You can replace ``helloworld`` with your desired project name.
+
+## Deployment to Heroku
+
+    $ git init
+    $ git add -A
+    $ git commit -m "Initial commit"
+
+    $ heroku create
+    $ git push heroku master
+
+    $ heroku run python manage.py migrate
+
+See also, a [ready-made application](https://github.com/heroku/python-getting-started), ready to deploy.
 
 
+## License: MIT
 
-## Highlights
-- Modern Python development with Python 3.6+
-- Bleeding edge Django 2.0+
-- Fully dockerized, local development via docker-compose.
-- PostgreSQL 9.6+
-- Start off with full test coverage, [continuous integration](https://github.com/agconti/cookiecutter-django-rest/blob/master/%7B%7Bcookiecutter.github_repository_name%7D%7D/.travis.yml), and continuous deployment.
-- Complete [Django Rest Framework](http://www.django-rest-framework.org/) integration
-- Auto deployment to Heroku included. Also since we're using containers we can easily deploy anywhere.
-- Always current dependencies and security updates enforced by [pyup.io](https://pyup.io/).
-- A slim but robust foundation -- just enough to maximize your productivity, nothing more.
+## Further Reading
 
-## Quick Start
-
-Install [cookiecutter](https://github.com/audreyr/cookiecutter):
-
-```bash
-brew install cookiecutter
-```
-
-Scaffold your project:
-```
-cookiecutter gh:agconti/cookiecutter-django-rest
-```
-
-![Scaffolding](media/scaffolding.gif)
-
-Example of the result: https://github.com/agconti/piedpiper-web
-
-Try creating a user!
-
-```bash
-curl -d '{"username":"'"$RANDOM"'", "password":"test", "email":"test@test.com", "first_name":"test", "last_name":"user"}' \
-     -H "Content-Type: application/json" \
-     -X POST https://piedpiper-prod.herokuapp.com/api/v1/users/
-```
+- [Gunicorn](https://warehouse.python.org/project/gunicorn/)
+- [WhiteNoise](https://warehouse.python.org/project/whitenoise/)
+- [dj-database-url](https://warehouse.python.org/project/dj-database-url/)

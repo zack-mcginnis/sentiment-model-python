@@ -1,9 +1,3 @@
-# {{cookiecutter.github_repository_name}}
-
-[![Build Status](https://travis-ci.org/{{cookiecutter.github_username}}/{{cookiecutter.github_repository_name}}.svg?branch=master)](https://travis-ci.org/{{cookiecutter.github_username}}/{{cookiecutter.github_repository_name}})
-[![Built with](https://img.shields.io/badge/Built_with-Cookiecutter_Django_Rest-F7B633.svg)](https://github.com/agconti/cookiecutter-django-rest)
-
-{{cookiecutter.description}}. Check out the project's [documentation](http://{{cookiecutter.github_username}}.github.io/{{cookiecutter.github_repository_name}}/).
 
 # Prerequisites
 
@@ -13,37 +7,35 @@
 
 # Initialize the project
 
-Start the dev server for local development:
-
-```bash
-docker-compose up
-```
-
 Create a superuser to login to the admin:
 
 ```bash
 docker-compose run --rm web ./manage.py createsuperuser
 ```
 
+Start the dev server for local development:
+```bash
+docker-compose up
+```
 
 # Continuous Deployment
 
-Deployment automated via Travis. When builds pass on the master or qa branch, Travis will deploy that branch to Heroku. Enable this by:
+Deployment is automated via Travis. When builds pass on the master or qa branch, Travis will deploy that branch to Heroku. Enable this by:
 
-Creating the production sever:
+Initializing the production sever:
 
 ```
-heroku create {{cookiecutter.app_name}}-prod --remote prod && \
-    heroku addons:create newrelic:wayne --app {{cookiecutter.app_name}}-prod && \
-    heroku addons:create heroku-postgresql:hobby-dev --app {{cookiecutter.app_name}}-prod && \
+heroku create app-prod --remote prod && \
+    heroku addons:create newrelic:wayne --app app-prod && \
+    heroku addons:create heroku-postgresql:hobby-dev --app app-prod && \
     heroku config:set DJANGO_SECRET=`openssl rand -base64 32` \
         DJANGO_AWS_ACCESS_KEY_ID="Add your id" \
         DJANGO_AWS_SECRET_ACCESS_KEY="Add your key" \
-        DJANGO_AWS_STORAGE_BUCKET_NAME="{{cookiecutter.app_name}}-prod" \
-        --app {{cookiecutter.app_name}}-prod
+        DJANGO_AWS_STORAGE_BUCKET_NAME="app-prod" \
+        --app app-prod
 ```
 
-Creating the qa sever:
+Initializing the qa sever:
 
 ```
 heroku create `{{cookiecutter.app_name}}-qa --remote qa && \
@@ -52,16 +44,16 @@ heroku create `{{cookiecutter.app_name}}-qa --remote qa && \
     heroku config:set DJANGO_SECRET=`openssl rand -base64 32` \
         DJANGO_AWS_ACCESS_KEY_ID="Add your id" \
         DJANGO_AWS_SECRET_ACCESS_KEY="Add your key" \
-        DJANGO_AWS_STORAGE_BUCKET_NAME="{{cookiecutter.app_name}}-qa" \
+        DJANGO_AWS_STORAGE_BUCKET_NAME="app-qa" \
 ```
 
-Securely add your heroku credentials to travis so it can automatically deploy your changes.
+Securely adding your Heroku credentials to Travis so it can automatically deploy your changes.
 
 ```bash
 travis encrypt HEROKU_AUTH_TOKEN="$(heroku auth:token)" --add
 ```
 
-Commit your changes and push to master and qa to trigger your first deploys:
+Committing your changes and pushing to master and qa to trigger your first deploys:
 
 ```bash
 git commit -m "ci(travis): added heroku credentials" && \

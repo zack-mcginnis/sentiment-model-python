@@ -14,13 +14,13 @@ script:
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login --username=_ --password="$HEROKU_AUTH_TOKEN" registry.heroku.com;
-    docker tag web registry.heroku.com/{{cookiecutter.app_name}}-prod/web;
-    docker push registry.heroku.com/{{cookiecutter.app_name}}-prod/web;
+    docker tag web registry.heroku.com/app-prod/web;
+    docker push registry.heroku.com/app-prod/web;
     fi
   - if [ "$TRAVIS_BRANCH" == "qa" ]; then
     docker login --username=_ --password="$HEROKU_AUTH_TOKEN" registry.heroku.com;
-    docker tag web registry.heroku.com/{{cookiecutter.app_name}}-qa/web;
-    docker push registry.heroku.com/{{cookiecutter.app_name}}-qa/web;
+    docker tag web registry.heroku.com/app-qa/web;
+    docker push registry.heroku.com/app-qa/web;
     fi
 
 notifications:

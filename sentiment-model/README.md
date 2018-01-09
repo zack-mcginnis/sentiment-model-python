@@ -1,9 +1,3 @@
-# {{cookiecutter.github_repository_name}}
-
-[![Build Status](https://travis-ci.org/{{cookiecutter.github_username}}/{{cookiecutter.github_repository_name}}.svg?branch=master)](https://travis-ci.org/{{cookiecutter.github_username}}/{{cookiecutter.github_repository_name}})
-[![Built with](https://img.shields.io/badge/Built_with-Cookiecutter_Django_Rest-F7B633.svg)](https://github.com/agconti/cookiecutter-django-rest)
-
-{{cookiecutter.description}}. Check out the project's [documentation](http://{{cookiecutter.github_username}}.github.io/{{cookiecutter.github_repository_name}}/).
 
 # Prerequisites
 
@@ -31,14 +25,14 @@ Deployment is automated via Travis. When builds pass on the master or qa branch,
 Initializing the production sever:
 
 ```
-heroku create {{cookiecutter.app_name}}-prod --remote prod && \
-    heroku addons:create newrelic:wayne --app {{cookiecutter.app_name}}-prod && \
-    heroku addons:create heroku-postgresql:hobby-dev --app {{cookiecutter.app_name}}-prod && \
+heroku create app-prod --remote prod && \
+    heroku addons:create newrelic:wayne --app app-prod && \
+    heroku addons:create heroku-postgresql:hobby-dev --app app-prod && \
     heroku config:set DJANGO_SECRET=`openssl rand -base64 32` \
         DJANGO_AWS_ACCESS_KEY_ID="Add your id" \
         DJANGO_AWS_SECRET_ACCESS_KEY="Add your key" \
-        DJANGO_AWS_STORAGE_BUCKET_NAME="{{cookiecutter.app_name}}-prod" \
-        --app {{cookiecutter.app_name}}-prod
+        DJANGO_AWS_STORAGE_BUCKET_NAME="app-prod" \
+        --app app-prod
 ```
 
 Initializing the qa sever:
@@ -50,7 +44,7 @@ heroku create `{{cookiecutter.app_name}}-qa --remote qa && \
     heroku config:set DJANGO_SECRET=`openssl rand -base64 32` \
         DJANGO_AWS_ACCESS_KEY_ID="Add your id" \
         DJANGO_AWS_SECRET_ACCESS_KEY="Add your key" \
-        DJANGO_AWS_STORAGE_BUCKET_NAME="{{cookiecutter.app_name}}-qa" \
+        DJANGO_AWS_STORAGE_BUCKET_NAME="app-qa" \
 ```
 
 Securely adding your Heroku credentials to Travis so it can automatically deploy your changes.
