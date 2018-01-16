@@ -13,5 +13,6 @@ admin.autodiscover()
 urlpatterns = [
     # url(r'^$', hello.views.index, name='index'),
     # url(r'^db', hello.views.db, name='db'),
-    path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
+    path('admin/', admin.site.urls)
 ]

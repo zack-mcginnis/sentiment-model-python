@@ -1,1 +1,1 @@
-web: gunicorn sentiment-model.wsgi
+web: gunicorn sentiment-api.wsgi
