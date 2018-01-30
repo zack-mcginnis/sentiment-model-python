@@ -26,7 +26,7 @@ DEBUG = False
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-ALLOWED_HOSTS = ['guarded-wildwood-25507.project-name.herokuapp.com']
+ALLOWED_HOSTS = ['sentiment-python-api.herokuapp.com', 'localhost']
 
 # Application definition
 
