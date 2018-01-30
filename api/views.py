@@ -29,8 +29,8 @@ def index(request):
 
     listOfResponses = []
 
-    #print("list of repsones: before")
-    #print(listOfResponses)
+    print("list of repsones: before")
+    print(public_tweets)
 
     for tweet in public_tweets:
         print("in loop")
