@@ -24,7 +24,7 @@ def index(request):
     auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
     api = tweepy.API(auth)
-
+    print("after api")
     public_tweets = api.search(cleanedQuery)
 
     listOfResponses = []
