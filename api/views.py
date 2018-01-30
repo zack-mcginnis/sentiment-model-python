@@ -11,28 +11,19 @@ import json
 
 
 def index(request):
-    print("testing this request")
 
     query = request.GET.urlencode()
     cleanedQuery = query[6:]
-    print("getting to query and cleanedQuery: ")
-    print(query, cleanedQuery)
 
     CONSUMER_KEY = os.environ.get('CONSUMER_KEY')
     CONSUMER_SECRET = os.environ.get('CONSUMER_SECRET')
     ACCESS_TOKEN = os.environ.get('ACCESS_TOKEN')
     ACCESS_TOKEN_SECRET = os.environ.get('ACCESS_TOKEN_SECRET')
 
-    print("printing env vars: ")
-    print(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
-
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
     api = tweepy.API(auth)
-
-    print("printing api: ")
-    print(api)
 
     public_tweets = api.search(cleanedQuery)
 
@@ -42,7 +33,8 @@ def index(request):
     #print(listOfResponses)
 
     for tweet in public_tweets:
-        #print(tweet.text)
+        print("in loop")
+        print(tweet.user.name)
         analysis = TextBlob(tweet.text)
         #print(analysis.sentiment)
         listOfResponses.append({"tweet": tweet.text, "analysis": analysis.sentiment, "created_at": tweet.created_at, "user": tweet.user.name, "screen_name": tweet.user.screen_name, "user_desc": tweet.user.description })
