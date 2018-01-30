@@ -9,7 +9,11 @@ verify_ssl = true
 django = "*"
 gunicorn = "*"
 django-heroku = "*"
-
+tweepy = "*"
+textblob = "*"
+djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
 
 [requires]
 

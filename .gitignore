@@ -2,3 +2,6 @@ venv
 *.pyc
 staticfiles
 .env
+conf.py
+config.py
+settings.py
