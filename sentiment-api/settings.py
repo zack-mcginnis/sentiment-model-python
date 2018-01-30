@@ -24,7 +24,7 @@ SECRET_KEY = 'CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be us
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS =  ['guarded-wildwood-25507.project-name.herokuapp.com',]
 
 # Application definition
 
